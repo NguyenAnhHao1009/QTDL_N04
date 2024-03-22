@@ -1,3 +1,6 @@
+<?php
+echo "Hello Nhóm 4";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
