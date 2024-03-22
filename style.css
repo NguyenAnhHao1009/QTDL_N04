@@ -1,0 +1,49 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(170, 150, 150);
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav-side{
+    color: aliceblue;
+    background-color: rgb(23, 2, 2);
+    box-shadow: 10px 0px 10px 0px rgba(45, 33, 33, 0.2); 
+}
+.main{
+    /* background-color: rgb(143, 102, 102); */
+}
+
+.logo{
+    background-color: #452424;
+}
+
+#navs a{
+    /* font-weight: bold; */
+    display: block;
+    color: aliceblue;
+    padding: 4px 0px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.nav-head{
+    background-color: #2d1717;
+    color: antiquewhite;
+    padding: 10px 0px;
+}
+
+#navs div{
+    padding: 0px;
+}
+
+#navs a:hover{
+    background-color: rgb(130, 94, 94);
+}
+
+#navbar{
+    background-color: #763636;
+}
