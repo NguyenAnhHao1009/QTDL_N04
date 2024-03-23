@@ -8,7 +8,8 @@ CREATE TABLE tai_khoan (
     mat_khau VARCHAR(50) NOT NULL,
     ho_ten VARCHAR(100) NOT NULL,
     sdt VARCHAR(15) NOT NULL,
-    loai ENUM('0', '1') DEFAULT '0' COMMENT '0: Nhân viên, 1: Admin'
+    loai ENUM('0', '1') DEFAULT '0' 
+    -- COMMENT '0: Nhân viên, 1: Admin'
 );
 
 -- Bảng khách hàng

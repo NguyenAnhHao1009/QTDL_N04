@@ -19,14 +19,13 @@ a{
 }
 
 .logo{
-    background-color: #452424;
+    background-color: #00f375;
 }
 
 #navs a{
     /* font-weight: bold; */
     display: block;
     color: aliceblue;
-    padding: 4px 0px;
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -45,5 +44,5 @@ a{
 }
 
 #navbar{
-    background-color: #763636;
+    background-color: #033f1b;
 }
