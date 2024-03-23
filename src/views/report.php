@@ -1,1 +1,0 @@
-<?='TRang report'?>

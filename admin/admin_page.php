@@ -10,7 +10,7 @@ if(!isset($_SESSION['admin_name'])){
 
 ?>
    <?php
-require_once __DIR__ . '/src/views/header.php';
+require_once __DIR__ . '/../src/views/header.php';
 ?>
 <div class="container">
 

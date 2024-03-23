@@ -1,42 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/img//logo.jfif" />
     <title>Ông Già Nè</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body class="row">
     <div class="nav-side col-2 p-0">
-        <div class="logo p-1">
-            <!-- <a href="index.html"> -->
-            <!-- <img src="images/logo.png" alt="logo"> -->
-            <h3 class="text-center text-white">ÔNG GIÀ</h3>
-            <!-- </a> -->
+        <div class="logo p-1 justify-content-center text-center">
+            <img width="30%" src="/img/logo.jfif" alt="Logo">
         </div>
 
-        <div id="navs" class="text-center pt-5 p-0">
+        <div class="navs pt-3">
             <div class="container-fluid">
-                <a href="index.php?action=dash_board">DashBoard</a>
+                <a class="text-truncate" href="/user_page.php?dashboard"><i class="fa-solid fa-house-chimney"></i> DashBoard</a>
             </div>
             <div class="container-fluid">
-                <a href="index.php?action=product_list">Sản Phẩm</a>
+                <a class="text-truncate" href="/user_page.php?sanpham"><i class="fa-solid fa-mug-hot"></i> Sản Phẩm</a>
             </div>
             <div class="container-fluid">
-                <a href="index.php?action=sales">Đơn hàng</a>
+                <a class="text-truncate" href="/user_page.php?thanhtoan"><i class="fa-solid fa-money-bill"></i> Thanh toán</a>
             </div>
             <div class="container-fluid">
-                <a href="index.php?action=report">Thống kê</a>
-            </div>
-            
-            <div class="container-fluid logout-btn">
-                <a href="/logout.php">Đăng xuất</a>
+                <a class="text-truncate" href="/user_page.php?donhang"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>
             </div>
         </div>
+
+
+        <?php
+        if (isset($_SESSION['admin_name'])) :
+        ?>
+            <hr>
+            <div class="container-fluid logout-btn admin-head">
+                <h5 class="text-center py-2 fw-bold">Quản Trị</h5>
+            </div>
+            <div class="navs text-center p-0">
+                <div class="container-fluid">
+                    <a class="text-truncate" href="/user_page.php?nhansu"><i class="fa-solid fa-user-pen"></i> Nhân sự</a>
+                </div>
+                <div class="container-fluid">
+                    <a class="text-truncate" href="/user_page.php?monan"><i class="fa-solid fa-utensils"></i> Món ăn</a>
+                </div>
+                <div class="container-fluid">
+                    <a class="text-truncate" href="/user_page.php?thongke"><i class="fa-solid fa-coins"></i> Thống kê</a>
+                </div>
+
+            <?php endif; ?>
+            <hr class="mt-3">
+            <div class="container-fluid">
+                <a class="text-truncate"><i class="fa-solid fa-user-check"></i> <?= $_SESSION['user_name'] ?? $_SESSION['admin_name'] ?></a>
+            </div>
+            <div class="    container-fluid logout-btn">
+                <a class="text-truncate" href="/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            </div>
+            </div>
 
     </div>
     <div class="main col-10 p-0">

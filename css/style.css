@@ -3,7 +3,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: rgb(170, 150, 150);
+    background-color: #d9e1cb;
 }
 
 a {
@@ -12,41 +12,64 @@ a {
 
 .nav-side {
     color: aliceblue;
-    background-color: rgb(23, 2, 2);
+    background-color: #0a1e1f;
     box-shadow: 10px 0px 10px 0px rgba(45, 33, 33, 0.2);
 }
 
-.main {
-    /* background-color: rgb(143, 102, 102); */
-}
 
 .logo {
-    background-color: green;
+    background-color: #899678;
 }
 
-#navs a {
+.navs a {
     /* font-weight: bold; */
     display: block;
+    text-align: left;
     color: aliceblue;
     transition: background-color 0.3s ease-in-out;
+    padding: 8px 0px 8px 25px;
+    font-size: larger;
 }
 
-.nav-head {
-    background-color: #2d1717;
-    color: antiquewhite;
-    padding: 15px 0px;
+
+.navs div{
+   padding: 0px;
+}
+.navs a:hover {
+    background-color: rgb(149, 197, 153);
 }
 
-#navs div {
-    padding: 0px;
+.admin-head{
+    color: rgb(2, 80, 2);
+    background: #fff
 }
 
-#navs a:hover {
-    background-color: rgb(130, 94, 94);
+.box{
+    cursor: pointer;
+    padding: 10px 0px 0px 0px;
+    background-color: #fff;
+    color: whitesmoke;
+    box-shadow: 10px 0px 10px 0px rgba(45, 33, 33, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-#navbar {
-    background-color: #033f1b;
+.box:hover{
+    box-shadow: 5px 5px 10px 0px rgba(45, 33, 33, 0.5);
+}
+
+.box i.big-icon{
+    color: black;
+    opacity: 0.25;
+    font-size: 5em;
+}
+
+
+.box .foot-box{
+    display: block;
+    height: 20px;
+    margin-top: 10px;
+    background-color: #000000;
+    opacity: 0.2;
 }
 
 

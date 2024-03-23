@@ -1,10 +1,10 @@
 <?php
-    
-try{
+
+try {
     $dbhost = 'localhost';
-    $dbname = 'user_db';
+    $dbname = 'eldercoffee_db';
     $dbuser = 'root';
-    $dbpass = 'root';
+    $dbpass = 'Z!L9@Wfd';
 
     $dsn = "mysql:host={$dbhost};dbname={$dbname}";
     $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
@@ -15,15 +15,11 @@ try{
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row) {
-        echo('<pre>');
-      print_r($row);
-      echo('</pre>');
+        echo ('<pre>');
+        print_r($row);
+        echo ('</pre>');
     }
-
-
-}catch(PDOException $e){
+} catch (PDOException $e) {
     echo $e->getMessage();
     exit();
 }
-
-?>

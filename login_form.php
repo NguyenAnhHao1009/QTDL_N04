@@ -16,7 +16,8 @@ if (isset($_POST['submit'])) {
       if ($row['type'] == 'admin') {
 
          $_SESSION['admin_name'] = $row['full_name'];
-         header('location:./admin/admin_page.php');
+         header('location:user_page.php');
+         
       } elseif ($row['type'] == 'user') {
 
          $_SESSION['user_name'] = $row['full_name'];

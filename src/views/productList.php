@@ -1,1 +1,0 @@
-<?='TRang product_list'?>
