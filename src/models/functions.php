@@ -1,34 +1,32 @@
 <?php
-
-function checkLogin()
+function redirect($link)
 {
-    if (isset($_SESSION['role'])) {
-        return $_SESSION['role'];
-    } else {
-        return false;
-    }
+?>
+    <script>
+        window.location.href = "<?php echo $link ?>";
+    </script>
+<?php
+}
+function checkUser(){
+	if(isset($_SESSION['user_name']) && $_SESSION['user_name']!=''){
+	
+		
+	}else{
+		redirect('./index.php');
+	}
 }
 
-function login($usn, $pwd)
-{
-    $dbhost = 'localhost';
-    $dbname = 'ong_gia_cf';
-    $dbuser = 'root';
-    $dbpass = 'Z!L9@Wfd';
-
-    $dsn = "mysql:host={$dbhost};dbname={$dbname}";
-    $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-    $PDO = new PDO($dsn, $dbuser, $dbpass, $options);
-
-    $sql = 'select *from tai_khoan where ten_dang_nhap = ? and mat_khau =?';
-    $stmt = $PDO->prepare($sql);
-    $stmt->execute([$usn, $pwd]);
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if (count($result) > 0) {
-        $_SESSION['role'] = $result[0]['loai'];
-        return true;
-    } else {
-        return false;
-    }
+function checkAdmin(){
+	if(isset($_SESSION['admin_name']) && $_SESSION['admin_name']!=''){
+	
+		
+	}else{
+		redirect('./index.php');
+	}
 }
+
+// function userArea(){
+// 	if($_SESSION['type']!='User'){
+// 		redirect('category.php');
+// 	}
+// }

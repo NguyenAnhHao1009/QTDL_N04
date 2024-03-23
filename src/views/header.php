@@ -1,6 +1,3 @@
-<?php
-// session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,47 +15,26 @@
         <div class="logo p-1">
             <!-- <a href="index.html"> -->
             <!-- <img src="images/logo.png" alt="logo"> -->
-            <h3 class="text-center text-white">LOGO NÈ</h3>
+            <h3 class="text-center text-white">ÔNG GIÀ</h3>
             <!-- </a> -->
         </div>
 
         <div id="navs" class="text-center pt-5 p-0">
             <div class="container-fluid">
-                <a href="index.php?action=dash_board">Dash Board</a>
+                <a href="index.php?action=dash_board">DashBoard</a>
             </div>
             <div class="container-fluid">
-                <a href="index.php?action=product_list">Products List</a>
+                <a href="index.php?action=product_list">Sản Phẩm</a>
             </div>
             <div class="container-fluid">
-                <a href="index.php?action=sales">Sales</a>
+                <a href="index.php?action=sales">Đơn hàng</a>
             </div>
             <div class="container-fluid">
-                <a href="index.php?action=report">Daily Sales Report</a>
+                <a href="index.php?action=report">Thống kê</a>
             </div>
-            <?php
-            if (isset($_SESSION['admin'])) :
-            ?>
-                <div class="container-fluid text-start px-3">
-                    <h5 class="m-2">Manager</h5>
-                </div>
-                <div class="container-fluid">
-                    <a href="index.php?action=categorieslist">Categories List</a>
-                </div>
-                <div class="container-fluid">
-                    <a href="index.php?action=userlist">Users List</a>
-                </div>
-                <div class="container-fluid">
-                    <a href="index.php?action=setting">Setting</a>
-                </div>
-
-            <?php endif; ?>
+            
             <div class="container-fluid logout-btn">
-                <a href="index.php?logout">Log out</a>
-            </div>
-            <div class="container-fluid logout-btn">
-                <a href="">Tài khoản : <?= $_SESSION['admin'] ?? $_SESSION['user'] ?>
-
-                </a>
+                <a href="/logout.php">Đăng xuất</a>
             </div>
         </div>
 

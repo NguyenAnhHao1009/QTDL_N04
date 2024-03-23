@@ -2,9 +2,9 @@
     
 try{
     $dbhost = 'localhost';
-    $dbname = 'ong_gia_cf';
+    $dbname = 'user_db';
     $dbuser = 'root';
-    $dbpass = 'Z!L9@Wfd';
+    $dbpass = 'root';
 
     $dsn = "mysql:host={$dbhost};dbname={$dbname}";
     $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
