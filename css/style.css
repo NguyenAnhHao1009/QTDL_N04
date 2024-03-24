@@ -1,213 +1,238 @@
 html,
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #d9e1cb;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #d9e1cb;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .nav-side {
-    color: aliceblue;
-    background-color: #0a1e1f;
-    box-shadow: 10px 0px 10px 0px rgba(45, 33, 33, 0.2);
+  color: aliceblue;
+  background-color: #0a1e1f;
+  box-shadow: 10px 0px 10px 0px rgba(45, 33, 33, 0.2);
 }
 
-
 .logo {
-    background-color: #899678;
+  background-color: #899678;
 }
 
 .navs a {
-    /* font-weight: bold; */
-    display: block;
-    text-align: left;
-    color: aliceblue;
-    transition: background-color 0.3s ease-in-out;
-    padding: 8px 0px 8px 25px;
-    font-size: larger;
+  /* font-weight: bold; */
+  display: block;
+  text-align: left;
+  color: aliceblue;
+  transition: background-color 0.3s ease-in-out;
+  padding: 8px 0px 8px 33px;
+  font-size: large;
 }
 
-
-.navs div{
-   padding: 0px;
+.navs div {
+  padding: 0px;
 }
 .navs a:hover {
-    background-color: rgb(149, 197, 153);
+  background-color: rgb(149, 197, 153);
 }
 
-.admin-head{
-    color: rgb(2, 80, 2);
-    background: #fff
+.admin-head {
+  color: rgb(2, 80, 2);
+  background: #fff;
 }
 
-.box{
-    cursor: pointer;
-    padding: 10px 0px 0px 0px;
-    background-color: #fff;
-    color: whitesmoke;
-    box-shadow: 10px 0px 10px 0px rgba(45, 33, 33, 0.2);
-    transition: box-shadow 0.3s ease-in-out;
+.box {
+  cursor: pointer;
+  padding: 10px 0px 0px 0px;
+  background-color: #fff;
+  color: whitesmoke;
+  box-shadow: 15px 0px 15px 0px rgba(45, 33, 33, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.box:hover{
-    box-shadow: 5px 5px 10px 0px rgba(45, 33, 33, 0.5);
+.box:hover {
+  box-shadow: 5px 5px 10px 0px rgba(45, 33, 33, 0.5);
 }
 
-.box i.big-icon{
-    color: black;
-    opacity: 0.25;
-    font-size: 5em;
+.box i.big-icon {
+  color: black;
+  opacity: 0.25;
+  font-size: 4.5em;
 }
 
-
-.box .foot-box{
-    display: block;
-    height: 20px;
-    margin-top: 10px;
-    background-color: #000000;
-    opacity: 0.2;
+.box .foot-box {
+  display: block;
+  height: 25px;
+  margin-top: 10px;
+  background-color: #000000;
+  opacity: 0.2;
 }
 
+.head-line {
+  display: block-inline;
+  background-color: #0a1e1f;
+  height: 5px;
+  content: none;
+  width: 100%;
+  margin-top: 0px
+}
+
+.head-name{
+    padding-top: 10px;
+    text-align: center;
+    font-size: 53.5px;
+    font-weight: bolder;
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
 
 /* Phần đăng nhập  */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 * {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
 }
 
 .container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    padding-bottom: 60px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 60px;
 }
 
 .container .content {
-    text-align: center;
+  text-align: center;
 }
 
 .container .content h3 {
-    font-size: 30px;
-    color: #333;
+  font-size: 30px;
+  color: #333;
 }
 
 .container .content h3 span {
-    background: rgb(18, 145, 39);
-    color: #fff;
-    border-radius: 5px;
-    padding: 0 15px;
+  background: rgb(18, 145, 39);
+  color: #fff;
+  border-radius: 5px;
+  padding: 0 15px;
 }
 
 .container .content h1 {
-    font-size: 50px;
-    color: #333;
+  font-size: 50px;
+  color: #333;
 }
 
 .container .content h1 span {
-    color: brown;
+  color: brown;
 }
 
 .container .content p {
-    font-size: 25px;
-    margin-bottom: 20px;
+  font-size: 25px;
+  margin-bottom: 20px;
 }
 
 .container .content .btn {
-    display: inline-block;
-    padding: 10px 30px;
-    font-size: 20px;
-    background: #333;
-    color: #fff;
-    margin: 0 5px;
-    text-transform: capitalize;
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 20px;
+  background: #333;
+  color: #fff;
+  margin: 0 5px;
+  text-transform: capitalize;
 }
 
 .container .content .btn:hover {
-    background: greenyellow;
+  background: greenyellow;
 }
 
 .form-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    padding-bottom: 60px;
-    background: #eee;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 60px;
+  background: #eee;
 }
 
 .form-container form {
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-    background: #fff;
-    text-align: center;
-    width: 500px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  text-align: center;
+  width: 500px;
 }
 
 .form-container form h3 {
-    font-size: 30px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    color: #333;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .form-container form input,
 .form-container form select {
-    width: 100%;
-    padding: 10px 15px;
-    font-size: 17px;
-    margin: 8px 0;
-    background: #eee;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 17px;
+  margin: 8px 0;
+  background: #eee;
+  border-radius: 5px;
 }
 
 .form-container form select option {
-    background: #fff;
+  background: #fff;
 }
 
 .form-container form .form-btn {
-    background: #fbd0d9;
-    color: black;
-    text-transform: capitalize;
-    font-size: 20px;
-    cursor: pointer;
+  background: #fbd0d9;
+  color: black;
+  text-transform: capitalize;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .form-container form .form-btn:hover {
-    background: greenyellow;
-    color: #fff;
+  background: greenyellow;
+  color: #fff;
 }
 
 .form-container form p {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #333;
+  margin-top: 10px;
+  font-size: 20px;
+  color: #333;
 }
 
 .form-container form p a {
-    color: red;
+  color: red;
 }
 
 .form-container form .error-msg {
-    margin: 10px 0;
-    display: block;
-    background: greenyellow;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 10px;
+  margin: 10px 0;
+  display: block;
+  background: greenyellow;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px;
 }

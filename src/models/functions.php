@@ -25,6 +25,17 @@ function checkAdmin(){
 	}
 }
 
+function checkValidItemID($id){
+	require_once __DIR__.'/../../config.php';
+	$sql = "select * from itemw where item_id = $id";
+	$result = mysqli_query($conn, $sql);
+	if(mysqli_num_rows($result) > 0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 // function userArea(){
 // 	if($_SESSION['type']!='User'){
 // 		redirect('category.php');

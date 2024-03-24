@@ -1,6 +1,8 @@
 <?php
-@include('config.php');
 session_start();
+include('config.php');
+
+
 if (isset($_POST['submit'])) {
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
@@ -8,7 +10,6 @@ if (isset($_POST['submit'])) {
    $select = " SELECT * FROM accounts WHERE email = '$email' && password = '$pass' ";
 
    $result = mysqli_query($conn, $select);
-   print_r($result);
    if (mysqli_num_rows($result) > 0) {
 
       $row = mysqli_fetch_array($result);
@@ -17,7 +18,6 @@ if (isset($_POST['submit'])) {
 
          $_SESSION['admin_name'] = $row['full_name'];
          header('location:user_page.php');
-         
       } elseif ($row['type'] == 'user') {
 
          $_SESSION['user_name'] = $row['full_name'];
@@ -38,7 +38,8 @@ if (isset($_POST['submit'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>ĐĂNG NHẬP ÔNG GIÀ</title>
+   <link rel="shortcut icon" href="/img/logo.jfif">
+   <title>ÔNG GIÀ XIN CHÀO</title>
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">

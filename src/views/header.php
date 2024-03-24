@@ -37,7 +37,7 @@
         if (isset($_SESSION['admin_name'])) :
         ?>
             <hr>
-            <div class="container-fluid logout-btn admin-head">
+            <div class="container-fluid admin-head">
                 <h5 class="text-center py-2 fw-bold">Quản Trị</h5>
             </div>
             <div class="navs text-center p-0">
@@ -45,13 +45,11 @@
                     <a class="text-truncate" href="/user_page.php?nhansu"><i class="fa-solid fa-user-pen"></i> Nhân sự</a>
                 </div>
                 <div class="container-fluid">
-                    <a class="text-truncate" href="/user_page.php?monan"><i class="fa-solid fa-utensils"></i> Món ăn</a>
-                </div>
-                <div class="container-fluid">
                     <a class="text-truncate" href="/user_page.php?thongke"><i class="fa-solid fa-coins"></i> Thống kê</a>
                 </div>
-
-            <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <div class="navs text-center p-0">
             <hr class="mt-3">
             <div class="container-fluid">
                 <a class="text-truncate"><i class="fa-solid fa-user-check"></i> <?= $_SESSION['user_name'] ?? $_SESSION['admin_name'] ?></a>
@@ -59,7 +57,7 @@
             <div class="    container-fluid logout-btn">
                 <a class="text-truncate" href="/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
             </div>
-            </div>
+        </div>
 
     </div>
     <div class="main col-10 p-0">
