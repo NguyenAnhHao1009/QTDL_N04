@@ -1,4 +1,5 @@
 Lâm:
+- Truy vấn dữ liệu nên đọc htmlspecialchars để tránh tình trạng bị lấy cắp thông tin hong ta.
 - Trang sản phẩm:
   + Thiếu mã sản phẩm 
   + Thanh tìm kiếm 
