@@ -5,15 +5,11 @@ $ds_sanpham = mysqli_fetch_all($ds_sanpham);
 ?>
 
 
-
-
-
-
 <div class="dash_board px-2">
     <h1 class="head-name">SẢN PHẨM</h1>
     <div class="head-line"></div>
     <div class="container-fluid">
-
+<!-- là admin thì được sửa  -->
         <?php if (isset($_SESSION['admin_name'])) : ?>
             <div class="text-end">
 

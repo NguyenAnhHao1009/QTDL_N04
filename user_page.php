@@ -23,7 +23,7 @@ if (isset($_GET['dashboard'])) {
          break;
    }
 }
-
+// phan san pham 
 //Thêm sản phẩm
 if (!isset($_POST['item_id']) && isset($_POST['item_name']) && isset($_POST['category_id']) && isset($_POST['description']) && isset($_POST['unit_price'])) {
    $item_name = $_POST['item_name'];
@@ -93,17 +93,57 @@ if (isset($_GET['thanhtoan'])) {
          break;
    }
 }
+// Them nhan su
+if (!isset($_POST['account_id']) && isset($_POST['full_name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['type'])) {
+   $full_name = htmlspecialchars($_POST['full_name']);
+   $email =htmlspecialchars($_POST['email']) ;
+   $password = md5($_POST['password']);
+   $type = htmlspecialchars($_POST['type']);
+
+   $insert = "INSERT INTO accounts (full_name, email, password, type) values('$full_name','$email','$password', '$type')";
+   mysqli_query($conn, $insert);
+   header('location:user_page.php?nhansu');
+}
+// Sửa nhân sự
+if (isset($_POST['account_id']) &&  isset($_POST['full_name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['type'])) {
+   $account_id =  htmlspecialchars($_POST['account_id']);
+   $full_name = htmlspecialchars($_POST['full_name']);
+   $email = $_POST['email'];
+   $password = md5($_POST['password']);
+   $type = $_POST['type'];
+
+   $update = "UPDATE accounts 
+           SET full_name = '$full_name', email =  '$email', password = '$password', type = '$type' 
+           WHERE account_id = $account_id";
+
+   mysqli_query($conn, $update);
+   header('location:user_page.php?nhansu');
+}
+
+// Phan nhan su --> Dieu huong 
 if (isset($_GET['nhansu'])) {
    switch ($_GET['nhansu']) {
-         // case 'dashboard':
-         //    require_once __DIR__. '/src/views/dashboard.php';
-         //    break;
-         // Các trường hợp xử lý với yêu cầu get
+      case 'them':
+         require_once __DIR__ . '/src/models/them_nhansu.php';
+         break;
+      case 'xoa':
+         require_once __DIR__ . '/src/models/xoa_nhansu.php';
+         break;
+      case 'sua':
+         $id_item = $_GET['id'];
+         require_once __DIR__ . '/src/models/sua_nhansu.php';
+         break;
+      case 'ten_tang_dan':
+
       default:
          require_once __DIR__ . '/src/views/nhansu.php';
          break;
    }
 }
+
+
+
+
 if (isset($_GET['thongke'])) {
    switch ($_GET['thongke']) {
          // case 'dashboard':
