@@ -22,7 +22,7 @@ $ds_taikhoan = mysqli_fetch_all($ds_taikhoan);
             <tr>
                 <!-- <th>Mã số</th> -->
                 <th onclick="sortTable(0)">ID <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
-                <th onclick="sortTable(2)">Tên <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
+                <th onclick="sortTable(1)">Tên <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(2)">email <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <?php
                 if (isset($_SESSION['admin_name']))
