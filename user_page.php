@@ -158,9 +158,6 @@ if (isset($_GET['thongke'])) {
 ?>
 
 
-
-
-
 <?php
 require_once __DIR__ . '/src/views/footer.php';
 ?> 

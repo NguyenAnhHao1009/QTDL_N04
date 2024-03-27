@@ -14,7 +14,7 @@
 <body class="row">
     <div class="nav-side col-2 p-0">
         <div class="logo p-1 justify-content-center text-center">
-            <img width="30%" src="/img/logo.jfif" alt="Logo">
+           <a href="user_page.php"> <img width="30%" src="/img/logo.jfif" alt="Logo"></a>
         </div>
 
         <div class="navs pt-3">
