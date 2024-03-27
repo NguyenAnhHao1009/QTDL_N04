@@ -42,10 +42,6 @@ $ds_sanpham = mysqli_fetch_all($ds_sanpham);
                     else
                         echo "<td>$sp[5]</td>";
                     ?>
-
-
-
-
                 </tr>
             <?php endforeach; ?>
         </table>

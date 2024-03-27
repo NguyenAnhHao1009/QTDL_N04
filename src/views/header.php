@@ -22,6 +22,9 @@
                 <a class="text-truncate" href="/user_page.php?dashboard"><i class="fa-solid fa-house-chimney"></i> DashBoard</a>
             </div>
             <div class="container-fluid">
+                <a class="text-truncate" href="/user_page.php?loai"><i class="fa-solid fa-list"></i> Loại</a>
+            </div>
+            <div class="container-fluid">
                 <a class="text-truncate" href="/user_page.php?sanpham"><i class="fa-solid fa-mug-hot"></i> Sản Phẩm</a>
             </div>
             <div class="container-fluid">
