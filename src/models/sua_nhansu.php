@@ -32,8 +32,8 @@ if(isset($_GET['id'])){
                                 <input type="email" class="form-control" id="email" name="email" value="<?php echo $row['email']; ?>" required> 
                             </div>
                             <div class="form-group mt-3">
-                                <label for="password">Mật khẩu</label>
-                                <input type="text" class="form-control" id="password" name="password" value="<?php echo $row['password']; ?>" required>
+                                <label for="password">Đặt lại mật khẩu</label>
+                                <input type="text" class="form-control" id="password" name="password" value="" placeholder="Nhập mật khẩu mới" required>
                             </div>
                             <div class="form-group mt-3">
                                 <label for="type">Quyền</label>
@@ -43,7 +43,7 @@ if(isset($_GET['id'])){
                                 </select>
                             </div>                     
                 
-                            <button type="submit" class="btn mt-3 btn-danger">Cập nhật sản phẩm</button>
+                            <button type="submit" class="btn mt-3 btn-danger">Cập nhật nhân sự</button>
                         </form>
                     </div>
                 </div>

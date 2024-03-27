@@ -48,23 +48,24 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-   <div class="form-container">
-
-      <form action="" method="post">
-         <h3>Đăng nhập</h3>
-         <?php
-         if (isset($error)) {
-            foreach ($error as $error) {
-               echo '<span class="error-msg">' . $error . '</span>';
+   <div class="background">
+      <div class="form-container">
+         <form action="" method="post">
+            <h3>Đăng nhập</h3>
+            <?php
+            if (isset($error)) {
+               foreach ($error as $error) {
+                  echo '<span class="error-msg">' . $error . '</span>';
+               };
             };
-         };
-         ?>
-         <input type="email" name="email" required placeholder="Nhập vào mail của bạn">
-         <input type="password" name="password" required placeholder="Nhập vào password">
-         <input type="submit" name="submit" value="Đăng nhập" class="form-btn">
-         <p>Bạn chưa có tài khoản? <a href="register.php">Đăng kí ngay</a></p>
-      </form>
+            ?>
+            <input type="email" name="email" required placeholder="Nhập vào mail của bạn">
+            <input type="password" name="password" required placeholder="Nhập vào password">
+            <input type="submit" name="submit" value="Đăng nhập" class="form-btn">
+            <p>Bạn chưa có tài khoản? <a href="register.php">Đăng kí ngay</a></p>
+         </form>
 
+      </div>
    </div>
 
 </body>

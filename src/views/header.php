@@ -14,7 +14,7 @@
 <body class="row">
     <div class="nav-side col-2 p-0">
         <div class="logo p-1 justify-content-center text-center">
-            <img width="30%" src="/img/logo.jfif" alt="Logo">
+            <a href="user_page.php"> <img width="30%" src="/img/logo.jfif" alt="Logo"></a>
         </div>
 
         <div class="navs pt-3">
@@ -22,10 +22,10 @@
                 <a class="text-truncate" href="/user_page.php?dashboard"><i class="fa-solid fa-house-chimney"></i> DashBoard</a>
             </div>
             <div class="container-fluid">
-                <a class="text-truncate" href="/user_page.php?sanpham"><i class="fa-solid fa-mug-hot"></i> Sản Phẩm</a>
+                <a class="text-truncate" href="/user_page.php?loai"><i class="fa-solid fa-list"></i> Loại</a>
             </div>
             <div class="container-fluid">
-                <a class="text-truncate" href="/user_page.php?thanhtoan"><i class="fa-solid fa-money-bill"></i> Thanh toán</a>
+                <a class="text-truncate" href="/user_page.php?sanpham"><i class="fa-solid fa-mug-hot"></i> Sản Phẩm</a>
             </div>
             <div class="container-fluid">
                 <a class="text-truncate" href="/user_page.php?donhang"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>

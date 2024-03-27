@@ -12,6 +12,15 @@ require_once __DIR__ . '/src/views/header.php';
 ?>
 
 <?php
+
+
+
+if(isset($_GET['timkiem-sanpham'])){
+      require_once __DIR__ . '/src/models/timkiem_sanpham.php';
+      require_once __DIR__ . '/src/views/sanpham.php';
+}
+
+
 if (isset($_GET['dashboard'])) {
    switch ($_GET['dashboard']) {
          // case 'dashboard':
@@ -23,6 +32,24 @@ if (isset($_GET['dashboard'])) {
          break;
    }
 }
+//Phần loại
+//Thêm loai
+if (!isset($_POST['category_id']) && isset($_POST['category_name'])) {
+   $category_name = $_POST['category_name'];
+   print_r($category_name);
+   $insert = "INSERT INTO category (category_name) values ('$category_name')";
+   mysqli_query($conn, $insert);
+   header('location:user_page.php?loai');
+}
+//Sửa loại
+if (isset($_POST['category_id']) && isset($_POST['category_name'])) {
+   $category_id = $_POST['category_id'];
+   $category_name = $_POST['category_name'];
+   $update = "UPDATE category SET category_name = '$category_name' WHERE category_id = '$category_id'";
+   mysqli_query($conn, $update);
+   header('location:user_page.php?loai');
+}
+//Hết phần loại
 // phan san pham 
 //Thêm sản phẩm
 if (!isset($_POST['item_id']) && isset($_POST['item_name']) && isset($_POST['category_id']) && isset($_POST['description']) && isset($_POST['unit_price'])) {
@@ -64,8 +91,7 @@ if (isset($_GET['sanpham'])) {
          $id_item = $_GET['id'];
          require_once __DIR__ . '/src/models/sua_sanpham.php';
          break;
-      case 'ten_tang_dan':
-
+         
       default:
          require_once __DIR__ . '/src/views/sanpham.php';
          break;
@@ -82,21 +108,21 @@ if (isset($_GET['donhang'])) {
          break;
    }
 }
-if (isset($_GET['thanhtoan'])) {
-   switch ($_GET['thanhtoan']) {
-         // case 'dashboard':
-         //    require_once __DIR__. '/src/views/dashboard.php';
-         //    break;
-         // Các trường hợp xử lý với yêu cầu get
-      default:
-         require_once __DIR__ . '/src/views/thanhtoan.php';
-         break;
-   }
-}
+// if (isset($_GET['thanhtoan'])) {
+//    switch ($_GET['thanhtoan']) {
+//          // case 'dashboard':
+//          //    require_once __DIR__. '/src/views/dashboard.php';
+//          //    break;
+//          // Các trường hợp xử lý với yêu cầu get
+//       default:
+//          require_once __DIR__ . '/src/views/thanhtoan.php';
+//          break;
+//    }
+// }
 // Them nhan su
 if (!isset($_POST['account_id']) && isset($_POST['full_name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['type'])) {
    $full_name = htmlspecialchars($_POST['full_name']);
-   $email =htmlspecialchars($_POST['email']) ;
+   $email = htmlspecialchars($_POST['email']);
    $password = md5($_POST['password']);
    $type = htmlspecialchars($_POST['type']);
 
@@ -141,6 +167,24 @@ if (isset($_GET['nhansu'])) {
    }
 }
 
+//Phan Loai --> Dieu huong
+if (isset($_GET['loai'])) {
+   switch ($_GET['loai']) {
+      case 'them':
+         require_once __DIR__ . '/src/models/them_loai.php';
+         break;
+      case 'xoa':
+         require_once __DIR__ . '/src/models/xoa_loai.php';
+         break;
+      case 'sua':
+         require_once __DIR__ . '/src/models/sua_loai.php';
+         break;
+
+      default:
+         require_once __DIR__ . '/src/views/loai.php';
+         break;
+   }
+}
 
 
 
@@ -156,9 +200,6 @@ if (isset($_GET['thongke'])) {
    }
 }
 ?>
-
-
-
 
 
 <?php

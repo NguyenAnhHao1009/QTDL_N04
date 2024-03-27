@@ -44,29 +44,31 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
    
+<div class="background">
 <div class="form-container">
 
-   <form action="" method="post">
-      <h3>Đăng ký</h3>
-      <?php
-      if(isset($error)){
-         foreach($error as $error){
-            echo '<span class="error-msg">'.$error.'</span>';
-         };
+<form action="" method="post">
+   <h3>Đăng ký</h3>
+   <?php
+   if(isset($error)){
+      foreach($error as $error){
+         echo '<span class="error-msg">'.$error.'</span>';
       };
-      ?>
-      <input type="text" name="name" required placeholder="Nhập vào tên của bạn">
-      <input type="email" name="email" required placeholder="Nhập vào mail của bạn">
-      <input type="password" name="password" required placeholder="Nhập mật khẩu">
-      <input type="password" name="cpassword" required placeholder="Xác nhận mật khẩu">
-      <select name="user_type">
-         <option value="user">Người dùng</option>
-         <option value="admin">Quản trị</option>
-      </select>
-      <input type="submit" name="submit" value="Đăng ký" class="form-btn">
-      <p>Bạn đã có tài khoản? <a href="login_form.php">Đăng nhập ngay</a></p>
-   </form>
+   };
+   ?>
+   <input type="text" name="name" required placeholder="Nhập vào tên của bạn">
+   <input type="email" name="email" required placeholder="Nhập vào mail của bạn">
+   <input type="password" name="password" required placeholder="Nhập mật khẩu">
+   <input type="password" name="cpassword" required placeholder="Xác nhận mật khẩu">
+   <select name="user_type">
+      <option value="user">Người dùng</option>
+      <option value="admin">Quản trị</option>
+   </select>
+   <input type="submit" name="submit" value="Đăng ký" class="form-btn">
+   <p>Bạn đã có tài khoản? <a href="login_form.php">Đăng nhập ngay</a></p>
+</form>
 
+</div>
 </div>
 
 </body>
