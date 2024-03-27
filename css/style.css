@@ -66,8 +66,7 @@ a {
     display: block;
     height: 25px;
     margin-top: 10px;
-    background-color: #000000;
-    opacity: 0.2;
+    background-color: #31313140;
 }
 
 .head-line {
@@ -175,7 +174,7 @@ a {
     padding: 20px;
     padding-bottom: 40px;
     background: #eee;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.265);
     /* Màu nền của form đăng nhập */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -245,8 +244,7 @@ a {
 }
 
 .background {
-    background-image: url('../img/log-bg.jpg');
-    /* Đường dẫn đến hình nền */
+    background-image: url('../img/background.jpg');
     background-size: cover;
     background-position: center;
     height: 100%;

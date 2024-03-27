@@ -33,7 +33,7 @@ $sum_monney = "select sum(it.unit_price* ind.quantity) as so_tien   from items i
     where it.item_id = ind.item_id and inv.invoice_id = ind.invoice_id";
 $so_tien = mysqli_query($conn, $sum_monney);
 $so_tien = mysqli_fetch_array($so_tien);
-$so_tien = $so_tien['so_tien'];
+$so_tien = intval($so_tien['so_tien']);
 
 ?>
 
@@ -160,7 +160,7 @@ $so_tien = $so_tien['so_tien'];
                             <p class="fw-bolder text-start">Tổng doanh thu</p>
                         </div>
                         <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-hand-holding-dollar"></i>
+                            <i class="big-icon fa-solid fa-coins"></i>
                         </div>
                         <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
                     </div>

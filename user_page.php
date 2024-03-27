@@ -185,9 +185,6 @@ if (isset($_GET['loai'])) {
          break;
    }
 }
-
-
-
 if (isset($_GET['thongke'])) {
    switch ($_GET['thongke']) {
          // case 'dashboard':
@@ -200,6 +197,7 @@ if (isset($_GET['thongke'])) {
    }
 }
 ?>
+
 
 
 <?php

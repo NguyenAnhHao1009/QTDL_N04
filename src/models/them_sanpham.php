@@ -1,4 +1,8 @@
 <?php
+
+$sql = 'select * from category';
+$result = mysqli_query($conn, $sql);
+$list_of_categories = mysqli_fetch_all($result);
 if (isset($_GET['sanpham']) && $_GET['sanpham'] == 'them') :
 ?>
 
@@ -18,12 +22,9 @@ if (isset($_GET['sanpham']) && $_GET['sanpham'] == 'them') :
                             <div class="form-group  pt-3">
                                 <label for="category_id">Danh mục:</label>
                                 <select class="form-control" id="category_id" name="category_id">
-                                    <option value="1">Bánh</option>
-                                    <option value="2">Trà</option>
-                                    <option value="3">Cà phê</option>
-                                    <option value="4">Nước ngọt</option>
-                                    <option value="5">Sinh tố</option>
-                                    <option value="6">Nước ép</option>
+                                    <?php foreach ($list_of_categories as $loc) : ?>
+                                        <option value="<?= $loc[0] ?>"><?= $loc[1] ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group  pt-3">
