@@ -36,7 +36,7 @@ if (!isset($ds_kh_timkiem)) {
 
 
 
-        <table id="myTable" class="table container-fluid text-center">
+        <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
                 <!-- <th>Mã số</th> -->
                 <th onclick="sortTable(0)">Mã số <i href="" class=" fw-bolder"></i></i></th>

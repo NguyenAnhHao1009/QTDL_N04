@@ -112,12 +112,23 @@ if (isset($_GET['sanpham'])) {
          break;
    }
 }
+// Phần đơn hàng 
 if (isset($_GET['donhang'])) {
    switch ($_GET['donhang']) {
-         // case 'dashboard':
-         //    require_once __DIR__. '/src/views/dashboard.php';
-         //    break;
-         // Các trường hợp xử lý với yêu cầu get
+      case 'them':
+         require_once __DIR__ . '/src/models/them_donhang.php';
+         break;
+      case 'xoa':
+         require_once __DIR__ . '/src/models/xoa_donhang.php';
+         break;
+      case 'sua':
+         $id_item = $_GET['id'];
+         require_once __DIR__ . '/src/models/sua_donhang.php';
+         break;
+      case 'in':
+         $id_item = $_GET['id'];
+         require_once __DIR__ . '/src/models/in_donhang.php';
+         break;
       default:
          require_once __DIR__ . '/src/views/donhang.php';
          break;
