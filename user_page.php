@@ -14,10 +14,14 @@ require_once __DIR__ . '/src/views/header.php';
 <?php
 
 
+if (isset($_GET['timkiem-khachhang'])) {
+   require_once __DIR__ . '/src/models/timkiem_khachhang.php';
+   require_once __DIR__ . '/src/views/khachhang.php';
+}
 
-if(isset($_GET['timkiem-sanpham'])){
-      require_once __DIR__ . '/src/models/timkiem_sanpham.php';
-      require_once __DIR__ . '/src/views/sanpham.php';
+if (isset($_GET['timkiem-sanpham'])) {
+   require_once __DIR__ . '/src/models/timkiem_sanpham.php';
+   require_once __DIR__ . '/src/views/sanpham.php';
 }
 
 
@@ -32,6 +36,16 @@ if (isset($_GET['dashboard'])) {
          break;
    }
 }
+
+// Thêm khách hàng
+if (isset($_POST['customer_name']) && isset($_POST['phone_number'])) {
+   $customer_name = $_POST['customer_name'];
+   $phone_number = $_POST['phone_number'];
+   $sql = "INSERT INTO customers (customer_name, phone_number) VALUES ('" . $customer_name . "', '" . $phone_number . "')";
+   mysqli_query($conn, $sql);
+   $_SESSION['them_kh_thanh_cong'] = 'Bạn đã thêm 1 khách hàng thành công';
+}
+
 //Phần loại
 //Thêm loai
 if (!isset($_POST['category_id']) && isset($_POST['category_name'])) {
@@ -51,6 +65,7 @@ if (isset($_POST['category_id']) && isset($_POST['category_name'])) {
 }
 //Hết phần loại
 // phan san pham 
+
 //Thêm sản phẩm
 if (!isset($_POST['item_id']) && isset($_POST['item_name']) && isset($_POST['category_id']) && isset($_POST['description']) && isset($_POST['unit_price'])) {
    $item_name = $_POST['item_name'];
@@ -91,7 +106,7 @@ if (isset($_GET['sanpham'])) {
          $id_item = $_GET['id'];
          require_once __DIR__ . '/src/models/sua_sanpham.php';
          break;
-         
+
       default:
          require_once __DIR__ . '/src/views/sanpham.php';
          break;
@@ -108,17 +123,16 @@ if (isset($_GET['donhang'])) {
          break;
    }
 }
-// if (isset($_GET['thanhtoan'])) {
-//    switch ($_GET['thanhtoan']) {
-//          // case 'dashboard':
-//          //    require_once __DIR__. '/src/views/dashboard.php';
-//          //    break;
-//          // Các trường hợp xử lý với yêu cầu get
-//       default:
-//          require_once __DIR__ . '/src/views/thanhtoan.php';
-//          break;
-//    }
-// }
+if (isset($_GET['khachhang'])) {
+   switch ($_GET['khachhang']) {
+      case 'them':
+         require_once __DIR__ . '/src/models/them_khachhang.php';
+         break;
+      default:
+         require_once __DIR__ . '/src/views/khachhang.php';
+         break;
+   }
+}
 // Them nhan su
 if (!isset($_POST['account_id']) && isset($_POST['full_name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['type'])) {
    $full_name = htmlspecialchars($_POST['full_name']);

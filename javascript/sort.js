@@ -2,7 +2,7 @@ var ascending = true; // Biến theo dõi trạng thái sắp xếp
 
 function sortTable(colIndex) {
   var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("myTable");
+  table = document.getElementsById("myTable");
   switching = true;
 
   // Đảo ngược trạng thái sắp xếp sau mỗi lần nhấn vào tiêu đề cột

@@ -1,11 +1,11 @@
 <?php
-if (!isset($products_by_search_key)) {
+if (!isset($ds_sp_timkiem)) {
     $sql = "select i.*, c.category_name from items i, category c
     where i.category_id = c.category_id; ";
     $ds_sanpham =  mysqli_query($conn, $sql);
     $ds_sanpham = mysqli_fetch_all($ds_sanpham);
 }else{
-    $ds_sanpham = $products_by_search_key;
+    $ds_sanpham = $ds_sp_timkiem;
 }
 
 ?>

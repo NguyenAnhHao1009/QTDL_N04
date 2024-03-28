@@ -30,6 +30,9 @@
             <div class="container-fluid">
                 <a class="text-truncate" href="/user_page.php?donhang"><i class="fa-solid fa-receipt"></i> Đơn hàng</a>
             </div>
+            <div class="container-fluid">
+                <a class="text-truncate" href="/user_page.php?khachhang"><i class="fa-solid fa-address-book"></i> Khách hàng</a>
+            </div>
         </div>
 
 
@@ -42,7 +45,7 @@
             </div>
             <div class="navs text-center p-0">
                 <div class="container-fluid">
-                    <a class="text-truncate" href="/user_page.php?nhansu"><i class="fa-solid fa-user-pen"></i> Nhân sự</a>
+                    <a class="text-truncate" href="/user_page.php?nhansu"><i class="fa-solid fa-users"></i> Nhân sự</a>
                 </div>
                 <div class="container-fluid">
                     <a class="text-truncate" href="/user_page.php?thongke"><i class="fa-solid fa-coins"></i> Thống kê</a>
