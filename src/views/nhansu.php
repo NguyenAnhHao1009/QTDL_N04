@@ -11,7 +11,7 @@ $ds_taikhoan = mysqli_fetch_all($ds_taikhoan);
     <h1 class="head-name">NHÂN SỰ</h1>
     <div class="head-line"></div>
     <div class="container-fluid">
-        <?php if (isset($_SESSION['admin_name'])) : ?>
+        <?php if (isset($_SESSION['admin_id'])) : ?>
             <div class="text-end">
 
                 <a href="user_page.php?nhansu=them" class="my-2 btn btn-success fw-bolder"><i class="fa-solid fa-file-circle-plus"></i> Thêm users</a>
@@ -25,7 +25,7 @@ $ds_taikhoan = mysqli_fetch_all($ds_taikhoan);
                 <th onclick="sortTable(1)">Tên <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(2)">email <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <?php
-                if (isset($_SESSION['admin_name']))
+                if (isset($_SESSION['admin_id']))
                     echo "<th>Thao tác</th>";
                 ?>
                 <th>Quyền</th>
@@ -36,7 +36,7 @@ $ds_taikhoan = mysqli_fetch_all($ds_taikhoan);
                     <td><?= $tk[1] ?></td>
                     <td><?= $tk[2] ?></td>
                     <?php
-                    if (isset($_SESSION['admin_name']))
+                    if (isset($_SESSION['admin_id']))
                         echo '<td><a href="/user_page.php?nhansu=sua&id=' . $tk[0] . '"><i class="btn btn-outline-success fa-solid fa-pen"></i> </a>
                         <a href="/user_page.php?nhansu=xoa&id=' . $tk[0] . '"><i class="btn btn-outline-danger fa-solid fa-trash"></i></a></td>';
                     else

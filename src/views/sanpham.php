@@ -27,7 +27,7 @@ if (!isset($ds_sp_timkiem)) {
         </form>
 
         <!-- là admin thì được sửa  -->
-        <?php if (isset($_SESSION['admin_name'])) : ?>
+        <?php if (isset($_SESSION['admin_id'])) : ?>
             <div class="text-end col-4">
                 <a href="user_page.php?sanpham=them" class="my-2 btn btn-success fw-bolder"><i class="fa-solid fa-file-circle-plus"></i> Thêm</a>
             </div>
@@ -41,7 +41,7 @@ if (!isset($ds_sp_timkiem)) {
                 <th onclick="sortTable(2)">Giá <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(3)">Loại <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <?php
-                if (isset($_SESSION['admin_name']))
+                if (isset($_SESSION['admin_id']))
                     echo "<th>Thao tác</th>";
                 else
                     echo "<th>Ngày tạo</th>";
@@ -55,7 +55,7 @@ if (!isset($ds_sp_timkiem)) {
                     <td><?= intval($sp[4] ) ?></td>
                     <td><?= $sp[6] ?></td>
                     <?php
-                    if (isset($_SESSION['admin_name']))
+                    if (isset($_SESSION['admin_id']))
                         echo '<td><a href="/user_page.php?sanpham=sua&id=' . $sp[0] . '"><i class="btn btn-outline-success fa-solid fa-pen"></i> </a>
                         <a href="/user_page.php?sanpham=xoa&id=' . $sp[0] . '"><i class="btn btn-outline-danger fa-solid fa-trash"></i></a></td>';
                     else

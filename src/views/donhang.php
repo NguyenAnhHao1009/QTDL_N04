@@ -6,6 +6,20 @@ $ds_hoadon = mysqli_fetch_all($ds_hoadon);
 ?>
 <div class="dash_board px-2">
     <h1 class="head-name">ĐƠN HÀNG</h1>
+
+    <?php
+
+    if (isset($_SESSION['tao_don_hang_thanh_cong'])) {
+        echo '<h4 class="fw-bolder text-center text-success">' . $_SESSION['tao_don_hang_thanh_cong'] . '</h4>';
+        unset($_SESSION['tao_don_hang_thanh_cong']);
+    };
+    if (isset($_SESSION['xoa_don_hang_thanh_cong'])) {
+        echo '<h4 class="fw-bolder text-center text-success">' . $_SESSION['xoa_don_hang_thanh_cong'] . '</h4>';
+        unset($_SESSION['xoa_don_hang_thanh_cong']);
+    };
+
+    ?>
+
     <div class="head-line"></div>
     <div class="container-fluid">
         <div class="text-end">
@@ -16,7 +30,7 @@ $ds_hoadon = mysqli_fetch_all($ds_hoadon);
             <tr>
                 <!-- <th>Mã số</th> -->
                 <th onclick="sortTable(0)">ID Hóa đơn <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
-                <th >Ngày tạo <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
+                <th>Ngày tạo <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(2)">Người lập <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th>Tên khách</th>
                 <th>Số tiền</th>
@@ -29,7 +43,7 @@ $ds_hoadon = mysqli_fetch_all($ds_hoadon);
                     <td><?= $hd[2] ?></td>
                     <td><?= $hd[3] ?></td>
                     <td><?= $hd[4] ?></td>
-                    <td><a href="/user_page.php?donhang=sua&id=<?= $hd[0] ?>"><i class="btn btn-outline-success fa-solid fa-pen"></i> </a>
+                    <td>
                         <a href="/user_page.php?donhang=xoa&id=<?= $hd[0] ?>"><i class="btn btn-outline-danger fa-solid fa-trash"></i></a>
                         <a href="/user_page.php?donhang=in&id=<?= $hd[0] ?>"><i class="btn btn-outline-primary fa-solid fa-print"></i></i></a>
                     </td>

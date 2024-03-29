@@ -3,11 +3,19 @@ session_start();
 @include 'config.php';
 @include 'function.php';
 
-if (!isset($_SESSION['user_name']) && !isset($_SESSION['admin_name'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
    header('location:login_form.php');
 }
 ?>
 <?php
+
+$user_id = $_SESSION['user_id'] ?? $_SESSION['admin_id'];
+
+$sql = "select full_name from accounts where account_id = '$user_id'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+$user_name = $row[0];
+
 require_once __DIR__ . '/src/views/header.php';
 ?>
 
@@ -128,6 +136,10 @@ if (isset($_GET['donhang'])) {
       case 'in':
          $id_item = $_GET['id'];
          require_once __DIR__ . '/src/models/in_donhang.php';
+         break;
+
+      case 'luu':
+         require_once __DIR__ . '/src/models/luu_donhang.php';
          break;
       default:
          require_once __DIR__ . '/src/views/donhang.php';

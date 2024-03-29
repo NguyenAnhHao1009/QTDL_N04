@@ -16,11 +16,11 @@ if (isset($_POST['submit'])) {
       print_r($row);
       if ($row['type'] == 'admin') {
 
-         $_SESSION['admin_name'] = $row['full_name'];
+         $_SESSION['admin_id'] = $row['account_id'];
          header('location:user_page.php?dashboard');
       } elseif ($row['type'] == 'user') {
 
-         $_SESSION['user_name'] = $row['full_name'];
+         $_SESSION['user_id'] = $row['account_id'];
          header('location:user_page.php?dashboard');
       }
    } else {

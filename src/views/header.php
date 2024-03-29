@@ -37,7 +37,7 @@
 
 
         <?php
-        if (isset($_SESSION['admin_name'])) :
+        if (isset($_SESSION['admin_id'])) :
         ?>
             <hr>
             <div class="container-fluid admin-head">
@@ -55,7 +55,7 @@
         <div class="navs text-center p-0">
             <hr class="mt-3">
             <div class="container-fluid">
-                <a class="text-truncate"><i class="fa-solid fa-user-check"></i> <?= $_SESSION['user_name'] ?? $_SESSION['admin_name'] ?></a>
+                <a class="text-truncate"><i class="fa-solid fa-user-check"></i> <?= $user_name??'' ?></a>
             </div>
             <div class="    container-fluid logout-btn">
                 <a class="text-truncate" href="/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
