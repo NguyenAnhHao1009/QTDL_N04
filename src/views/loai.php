@@ -16,7 +16,7 @@ $ds_loai = mysqli_fetch_all($ds_loai);
                 <a href="user_page.php?loai=them" class="my-2 btn btn-success fw-bolder"><i class="fa-solid fa-file-circle-plus"></i> Thêm</a>
             </div>
         <?php endif; ?>
-        <table id="myTable" class="table container-fluid text-center">
+        <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
                 <!-- <th>Mã số</th> -->
                 <th onclick="sortTable(0)">Mã loại<i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>

@@ -18,7 +18,7 @@ $ds_taikhoan = mysqli_fetch_all($ds_taikhoan);
             </div>
         <?php endif; ?>
         <!-- HIEN THI BANG NHAN SU  -->
-        <table id="myTable" class="table container-fluid text-center">
+        <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
                 <!-- <th>Mã số</th> -->
                 <th onclick="sortTable(0)">ID <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
