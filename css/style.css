@@ -253,3 +253,14 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+.prod-item {
+    transition: all 0.3s ease !important;
+}
+
+.prod-item:hover {
+    background-color: #f0f0f0;
+    /* Màu nền khi hover */
+    cursor: pointer !important;
+    /* Thay đổi con trỏ chuột */
+}

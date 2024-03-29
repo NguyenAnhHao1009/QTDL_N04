@@ -21,16 +21,21 @@ require_once __DIR__ . '/src/views/header.php';
 
 <?php
 
+// Khu tim kiếm
+if (isset($_GET['timkiem-donhang'])) {
+   require_once __DIR__ . '/src/models/timkiem_donhang.php';
+   require_once __DIR__ . '/src/views/donhang.php';
+} 
 
 if (isset($_GET['timkiem-khachhang'])) {
    require_once __DIR__ . '/src/models/timkiem_khachhang.php';
    require_once __DIR__ . '/src/views/khachhang.php';
-}
+} 
 
 if (isset($_GET['timkiem-sanpham'])) {
    require_once __DIR__ . '/src/models/timkiem_sanpham.php';
    require_once __DIR__ . '/src/views/sanpham.php';
-}
+} 
 
 
 if (isset($_GET['dashboard'])) {
