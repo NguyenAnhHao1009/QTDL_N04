@@ -36,7 +36,6 @@ if (!isset($ds_sp_timkiem)) {
 
         <table id="myTable" class="table container-fluid text-center">
             <tr>
-                <!-- <th>Mã số</th> -->
                 <th onclick="sortTable(0)">Tên <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
                 <th>Mô tả về sản phẩm</th>
                 <th onclick="sortTable(2)">Giá <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
