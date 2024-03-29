@@ -7,7 +7,6 @@ if (!isset($ds_sp_timkiem)) {
 }else{
     $ds_sanpham = $ds_sp_timkiem;
 }
-
 ?>
 
 

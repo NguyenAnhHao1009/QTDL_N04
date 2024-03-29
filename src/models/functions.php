@@ -9,7 +9,7 @@ function redirect($link)
 }
 function checkUser()
 {
-	if (isset($_SESSION['user_name']) && $_SESSION['user_name'] != '') {
+	if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 	} else {
 		redirect('./index.php');
 	}
@@ -17,7 +17,7 @@ function checkUser()
 
 function checkAdmin()
 {
-	if (isset($_SESSION['admin_name']) && $_SESSION['admin_name'] != '') {
+	if (isset($_SESSION['admin_id']) && $_SESSION['admin_id'] != '') {
 	} else {
 		redirect('./index.php');
 	}
