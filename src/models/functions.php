@@ -9,7 +9,7 @@ function redirect($link)
 }
 function checkUser()
 {
-	if (isset($_SESSION['user_name']) && $_SESSION['user_name'] != '') {
+	if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 	} else {
 		redirect('./index.php');
 	}
@@ -17,7 +17,7 @@ function checkUser()
 
 function checkAdmin()
 {
-	if (isset($_SESSION['admin_name']) && $_SESSION['admin_name'] != '') {
+	if (isset($_SESSION['admin_id']) && $_SESSION['admin_id'] != '') {
 	} else {
 		redirect('./index.php');
 	}
@@ -35,7 +35,7 @@ function checkValidItemID($id)
 	}
 }
 
-function kiemtraKHcoTonTai($conn,$customer_name, $phone_number)
+function kiemtraKHcoTonTai($conn, $customer_name, $phone_number)
 {
 	$sql = "select * from customers where customer_name = '$customer_name' and phone_number = '$phone_number';";
 	$result = mysqli_query($conn, $sql);
@@ -49,9 +49,9 @@ function kiemtraKHcoTonTai($conn,$customer_name, $phone_number)
 
 // $list_products là 1 mảng gồm các sản phẩm, mối sản phẩm gồm product_id và quantity
 
-function taoHoaDon($conn,$customer_name, $phone_number, $account_id, array $list_products, $discount, $total)
+function taoHoaDon($conn, $customer_name, $phone_number, $account_id, array $list_products, $discount, $total)
 {
-	if (!kiemtraKHcoTonTai($conn,$customer_name, $phone_number)) {
+	if (!kiemtraKHcoTonTai($conn, $customer_name, $phone_number)) {
 		$sql = "insert into customers (customer_name, phone_number) values('$customer_name', '$phone_number')";
 		mysqli_query($conn, $sql);
 	}

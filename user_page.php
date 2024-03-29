@@ -129,12 +129,12 @@ if (isset($_GET['donhang'])) {
       case 'xoa':
          require_once __DIR__ . '/src/models/xoa_donhang.php';
          break;
-      case 'sua':
-         $id_item = $_GET['id'];
-         require_once __DIR__ . '/src/models/sua_donhang.php';
-         break;
+      // case 'sua':
+      //    $id_item = $_GET['id'];
+      //    require_once __DIR__ . '/src/models/sua_donhang.php';
+      //    break;
       case 'in':
-         $id_item = $_GET['id'];
+         $item_id = $_GET['id'];
          require_once __DIR__ . '/src/models/in_donhang.php';
          break;
 
