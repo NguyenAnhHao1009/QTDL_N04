@@ -1,2 +1,2 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', 'FD!LG@vY', 'eldercoffee_db');
+$conn = mysqli_connect('localhost', 'root', 'Z!L9@Wfd', 'eldercoffee_db');

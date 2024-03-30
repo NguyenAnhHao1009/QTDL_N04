@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_GET['donhang']) && isset($_GET['id'])) {
     $invoice_id = $_GET['id'];
 
@@ -34,8 +35,16 @@ if (isset($_GET['donhang']) && isset($_GET['id'])) {
 
 ?>
 
-<div class="container row justify-content-center ">
-    <div class="col-6 text-dark bg-light box p-5 bill">
+
+
+<div class="container row justify-content-center mt-5">
+    <div class="d-flex row justify-content-between px-4">
+        <a class="col-1 btn btn-primary" href="user_page.php?donhang">Quay lại</a>
+        <button class="col-1 btn btn-warning" onclick="printToPDF()"><i class="fa-solid fa-print"></i></button>
+
+    </div>
+
+    <div id='bill' class="col-6 text-dark bg-light p-5 bill">
         <h2 class="text-center fw-bold">ÔNG GIÀ COFFEE</h2>
         <div class=" row justify-content-center">
             <img style="border-radius: 50%;" src="/img/logo.jfif" alt="Logo" class="col-3">
@@ -82,5 +91,19 @@ if (isset($_GET['donhang']) && isset($_GET['id'])) {
 
     </div>
 
-
 </div>
+
+<script>
+    function printToPDF() {
+        // Sử dụng html2canvas để chụp phần tử có id là "bill"
+        html2canvas(document.getElementById('bill')).then(function(canvas) {
+            
+            var imgData = canvas.toDataURL('image/png');
+
+            var pdf = new jsPDF('p', 'mm', 'a4');
+
+            pdf.addImage(imgData, 'PNG', 0, 0);
+            pdf.save('invoice.pdf');
+        });
+    }
+</script>

@@ -129,7 +129,7 @@ if (isset($_GET['donhang']) && $_GET['donhang'] == 'them') :
 
                 <div class="card-footer py-2 text-right">
                     <h3><input class="p-2" type="text" placeholder="Giảm giá" name="discount">%</h3>
-                    <div class="fw-bold h3">Tổng tiền: <span id="total">0</span>.000 VNĐ</div>
+                    <div class="fw-bold h3">Tổng tiền: <span id="total">0</span> VNĐ</div>
 
                     <button class="btn btn-success rounded-2" type="submit" form="last-bill-form">Tạo</button>
                     <?php if (!isset($id)) : ?>

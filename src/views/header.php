@@ -9,10 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+
 </head>
 
 <body class="row">
-    <div class="nav-side col-2 p-0">
+    <div class="nav-side col-2 p-0 sticky-top">
         <div class="logo p-1 justify-content-center text-center">
             <a href="user_page.php?dashboard"> <img width="30%" src="/img/logo.jfif" alt="Logo"></a>
         </div>
@@ -55,7 +58,7 @@
         <div class="navs text-center p-0">
             <hr class="mt-3">
             <div class="container-fluid">
-                <a class="text-truncate"><i class="fa-solid fa-user-check"></i> <?= $user_name??'' ?></a>
+                <a class="text-truncate"><i class="fa-solid fa-user-check"></i> <?= $user_name ?? '' ?></a>
             </div>
             <div class="    container-fluid logout-btn">
                 <a class="text-truncate" href="/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
