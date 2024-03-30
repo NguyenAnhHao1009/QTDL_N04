@@ -29,7 +29,7 @@ $so_hoadon = mysqli_query($conn, $count_invoices);
 $so_hoadon = mysqli_fetch_array($so_hoadon);
 $so_hoadon = $so_hoadon['so_hoadon'];
 
-$sum_monney = "select sum(it.unit_price* ind.quantity) as so_tien   from items it, invoices inv, invoice_details ind 
+$sum_monney = "select sum(it.unit_price* ind.quantity) as so_tien from items it, invoices inv, invoice_details ind 
     where it.item_id = ind.item_id and inv.invoice_id = ind.invoice_id";
 $so_tien = mysqli_query($conn, $sum_monney);
 $so_tien = mysqli_fetch_array($so_tien);
@@ -43,238 +43,101 @@ $so_tien = intval($so_tien['so_tien']);
     <h1 class="head-name">THỐNG KÊ</h1>
     <div class="head-line"></div>
     <div class="container-fluid">
-        <div class="row my-2 justify-content-around">
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #e75811;" class="box row justify-content-between">
-                        <div class="col-6">
-                            <h1 class="fw-bolder"><?= $so_mon ?></h1>
-                            <p class="fw-bolder text-start">Món ăn</p>
+        <div class="row px-2">
+            <form method="POST" action="" class="col-2 border border-1">
+                <div class="">
+                    <div class="row justify-content-start">
+                        <h3 class="fw-bold text-center">Chọn</h3>
+                        <div class="">
+                            <label class="fw-bold" for="start_date">Ngày bắt đầu:</label>
+                            <input type="date" id="start_date" class="form-control">
                         </div>
-                        <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-mug-hot"></i>
+                        <div class="">
+                            <label class="fw-bold" for="end_date">Ngày kết thúc:</label>
+                            <input type="date" id="end_date" class="form-control">
                         </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
-                    </div>
+                        <div>
+                            <button type="submit" class="btn btn-success mt-2 mr-2">Thống kê</button>
+                            <button type="reset" class="btn btn-danger mt-2 mr-2">Hủy</button>
+                        </div>
 
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #019159;" class="box row justify-content-between">
-                        <div class="col-6">
-                            <h1 class="fw-bolder"><?= $so_nhanvien ?></h1>
-                            <p class="fw-bolder text-start">Nhân viên</p>
-                        </div>
-                        <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-users"></i>
-                        </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
                     </div>
-
                 </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #ff9e16;" class="box row justify-content-between">
-                        <div class="col-6">
-                            <h1 class="fw-bolder"><?= $so_khachhang ?></h1>
-                            <p class="fw-bolder text-start">Khách hàng</p>
-                        </div>
-                        <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-users-viewfinder"></i>
-                        </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
-                    </div>
+                <!-- Thống kê theo tiêu chí    -->
+            </form>
+            <div class="container-fluid col-8">
+                <div>
+                    <h3 class="fw-bold text-center">Hóa đơn</h3>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã hóa đơn</th>
+                                <th scope="col">Ngày tạo</th>
+                                <th scope="col">Khách hàng</th>
+                                <th scope="col">Người tạo</th>
+                                <th scope="col">Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if (isset($_POST['start_date']) && isset($_POST['end_date'])) {
+                                $start_date = $_POST['start_date']; // Lấy ngày bắt đầu từ form
+                                $end_date = $_POST['end_date']; // Lấy ngày kết thúc từ form
+                                if ($start_date > $end_date) {
+                                    echo "<script>alert('Vui lòng nhập ngày bắt đầu nhỏ hơn ngày kết thúc!');</script>";
+                                }
+                                // Thực hiện câu truy vấn để lấy thông tin hóa đơn trong khoảng thời gian
+                                $invoices_query = "SELECT inv.invoice_id, inv.creation_time, cus.customer_name, acc.full_name, inv.total 
+                                                FROM invoices inv
+                                                JOIN customers cus ON inv.customer_id = cus.customer_id
+                                                JOIN accounts acc ON inv.account_id = acc.account_id
+                                                WHERE inv.creation_time BETWEEN '$start_date' AND '$end_date'";
+                                $result = mysqli_query($conn, $invoices_query);
+    
+                                // Hiển thị kết quả
+                                $row = mysqli_fetch_all($result);
+                                
+                                print_r($row);
+                                if ($row<=0) {echo "<td>Không có gì để hiển thị</td>";} ;
+    
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row['invoice_id'] . "</td>";
+                                    echo "<td>" . $row['creation_time'] . "</td>";
+                                    echo "<td>" . $row['customer_name'] . "</td>";
+                                    echo "<td>" . $row['full_name'] . "</td>";
+                                    echo "<td>" . $row['total'] . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr>Không có gì để hiển thị</tr>";
+                            }
+                            // Thực hiện câu truy vấn để lấy thông tin hóa đơn trong khoảng thời gian
+                            
+                            ?>
 
+                        </tbody>
                 </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #5e61a7" class="box row justify-content-between">
-                        <div class="col-6">
-                            <h1 class="fw-bolder">2</h1>
-                            <p class="fw-bolder text-start">Chi nhánh</p>
-                        </div>
-                        <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-house-flag"></i>
-                        </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
-                    </div>
 
-                </div>
+
             </div>
+
+
         </div>
-
-        <div class="row my-3 justify-content-around">
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #2c76b5;" class="box row justify-content-between">
-                        <div class="col-6">
-                            <h1 class="fw-bolder"><?= $so_danhmuc ?></h1>
-                            <p class="fw-bolder text-start">Danh mục</p>
-                        </div>
-                        <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-list"></i>
-                        </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #001e40" class="box row justify-content-between">
-                        <div class="col-6">
-                            <h1 class="fw-bolder"><?= $so_admin ?></h1>
-                            <p class="fw-bolder text-start">Nhà quản lý</p>
-                        </div>
-                        <div class="col-5 text-center">
-                            <i style="color: #b4aba9;" class="big-icon fa-solid fa-people-roof"></i>
-                        </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #27aebb;" class="box row justify-content-between">
-                        <div class="col-6">
-                            <h1 class="fw-bolder"><?= $so_hoadon ?></h1>
-                            <p class="fw-bolder text-start">Hóa đơn</p>
-                        </div>
-                        <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-file-invoice-dollar"></i>
-                        </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="px-3">
-                    <div style="background-color: #e83260;" class="box row justify-content-between">
-                        <div class="col-7">
-                            <h1 class="fw-bolder"><?= $so_tien ?></h1>
-                            <p class="fw-bolder text-start">Doanh thu</p>
-                        </div>
-                        <div class="col-5 text-center">
-                            <i class="big-icon fa-solid fa-coins"></i>
-                        </div>
-                        <div class="foot-box col-12 text-center"><i class="small-icon text-white fa-solid fa-eye"></i></div>
-                    </div>
-
-                </div>
-            </div>
+        <div class="row px-2">
+            <table class="table table-info">
+                <tr>
+                    <th scope="col">Thông tin</th>
+                    <th scope="col">Số liệu</th>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
 
-<div class="container-fluid row px-2">
-    <form method="" action="" class="container col-4 border border-1">
-        <div class="container mt-2">
-            <div class="row justify-content-start">
-                <div class="col-md-6">
-                    <label class="fw-bold" for="start_date">Ngày bắt đầu:</label>
-                    <input type="date" id="start_date" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <label class="fw-bold" for="end_date">Ngày kết thúc:</label>
-                    <input type="date" id="end_date" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="container mt-2">
-            <div class="row justify-content-start">
-                <div class="col-md-6">
-                    <label class="fw-bold" for="month">Theo tháng:</label>
-                    <input type="month" id="month" class="form-control" placeholder="Chọn tháng">
-                </div>
-            </div>
-        </div>
-        <div class="container mt-2">
-            <div class="row justify-content-start">
-                <div class="col-md-6">
-                    <label class="fw-bold" for="year">Theo năm:</label>
-                    <input type="year" id="year" class="form-control" placeholder="Chọn năm">
-                </div>
-            </div>
-        </div>
-        <div class="container mt-2">
-            <button type="submit" class="btn btn-success">Thống kê</button>
-            <button type="reset" class="btn btn-danger">Hủy</button>
-        </div>
-        <hr>
-
-        <div class="container mt-2">
-            <h5>Tổng doanh thu: 10000VNĐ</h5>
-            <h5>Khách hàng mua nhiều nhất: </h5>
-            <h5>Món bán chạy nhất: </h5>
-            <h5>Món bán ít nhất: </h5>
-            <h5>Nhân viên bán nhiều nhất: </h5>
-            <h5>Nhân viên bán ít nhất: </h5>
-        </div>
-
-    </form>
-    <div class="container-fluid col-8">
-
-
-        <div>
-            <h3 class="fw-bold text-center">Hóa đơn</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Mã hóa đơn</th>
-                        <th scope="col">Ngày tạo</th>
-                        <th scope="col">Khách hàng</th>
-                        <th scope="col">Người tạo</th>
-                        <th scope="col">Tổng tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <th>10/09/2022</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <th>10/09/2022</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <th>10/09/2022</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>100</td>
-                    </tr>
-
-                </tbody>
-        </div>
-
-
-    </div>
 
 
 </div>
-
-
-
-
-
-
-
-
-</div>
-
-
-
 </div>
 
 </div>
