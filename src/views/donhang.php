@@ -40,10 +40,10 @@ if (!isset($ds_donhang_timkiem)) {
             <tr>
                 <!-- <th>Mã số</th> -->
                 <th onclick="sortTable(0)">ID Hóa đơn <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
-                <th onclick="sortTable(0)">Ngày tạo <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
+                <th onclick="sortTable(1)">Ngày tạo <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(2)">Người lập <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
-                <th onclick="sortTable(0)">Tên khách <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></th>
-                <th onclick="sortTable(0)">Số tiền <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></th>
+                <th onclick="sortTable(3)">Tên khách <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></th>
+                <th onclick="sortTable(4)">Số tiền <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></th>
                 <th>Thao tác</th>
             </tr>
             <?php foreach ($ds_hoadon as $hd) : ?>
