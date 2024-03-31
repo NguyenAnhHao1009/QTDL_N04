@@ -39,7 +39,7 @@ require('./src/models/thongke.php');
                         <?php
                         if (!empty($start_date) && !empty($end_date)) :
                             $new_start_date = date('d/m/Y', strtotime($start_date));
-                            $new_end_date = date('d/m/Y', strtotime($end_date));
+                            $new_end_date = date('d/m/Y', strtotime($end_date_string));
                         ?>
                             <h3>Thống kê từ ngày <b><?= $new_start_date ?></b> đến ngày <b><?= $new_end_date ?></b></h3>
 
@@ -61,11 +61,11 @@ require('./src/models/thongke.php');
                                 if (!empty($ds_hoadon)) {
                                     foreach ($ds_hoadon as $hd) : ?>
                                         <tr>
-                                            <td><?= $hd[0] ?? 0 ?></td>
-                                            <td><?= $hd[1] ?? 0 ?></td>
-                                            <td><?= $hd[2] ?? 0 ?></td>
-                                            <td><?= $hd[3] ?? 0 ?></td>
-                                            <td><?= intval($hd[4]) ?>VNĐ</td>
+                                            <td><?= $hd['invoice_id'] ?? 0 ?></td>
+                                            <td><?= $hd['creation_time'] ?? 0 ?></td>
+                                            <td><?= $hd['customer_name'] ?? 0 ?></td>
+                                            <td><?= $hd['full_name'] ?? 0 ?></td>
+                                            <td><?= intval($hd['total']) ?> VNĐ</td>
                                         </tr>
                                 <?php endforeach;
                                 } else {

@@ -97,7 +97,7 @@ if (isset($_GET['donhang']) && isset($_GET['id'])) {
     function printToPDF() {
         // Sử dụng html2canvas để chụp phần tử có id là "bill"
         html2canvas(document.getElementById('bill')).then(function(canvas) {
-            
+
             var imgData = canvas.toDataURL('image/png');
 
             var pdf = new jsPDF('p', 'mm', 'a4');

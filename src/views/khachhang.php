@@ -17,7 +17,8 @@ if (!isset($ds_kh_timkiem)) {
     <?php endif; ?>
     <?php if (isset($_SESSION['them_kh_thanh_cong'])) : ?>
         <h4 class="fw-bolder text-center text-success"><?= $_SESSION['them_kh_thanh_cong']; ?></h4>
-    <?php unset($_SESSION['them_kh_thanh_cong']); endif; ?>
+    <?php unset($_SESSION['them_kh_thanh_cong']);
+    endif; ?>
     <div class="head-line"></div>
     <div class="container-fluid row justify-content-between">
 
@@ -39,7 +40,7 @@ if (!isset($ds_kh_timkiem)) {
         <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
                 <!-- <th>Mã số</th> -->
-                <th onclick="sortTable(0)">Mã số <i href="" class=" fw-bolder"></i></i></th>
+                <th>Mã số </th>
                 <th onclick="sortTable(1)">Tên khách hàng <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i> </th>
                 <th onclick="sortTable(2)">Số điện thoại <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
 

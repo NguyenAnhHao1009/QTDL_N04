@@ -35,7 +35,7 @@ if (!isset($ds_sp_timkiem)) {
 
         <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
-                <th onclick="sortTable(0)">Tên <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
+                <th >Tên <i href="" class=" fw-bolder"></i></i></th>
                 <th>Mô tả về sản phẩm</th>
                 <th onclick="sortTable(2)">Giá <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(3)">Loại <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
@@ -51,7 +51,7 @@ if (!isset($ds_sp_timkiem)) {
                 <tr>
                     <td><?= $sp[1] ?></td>
                     <td><?= $sp[3] ?></td>
-                    <td><?= intval($sp[4] ) ?></td>
+                    <td><?= intval($sp[4]) ?></td>
                     <td><?= $sp[6] ?></td>
                     <?php
                     if (isset($_SESSION['admin_id']))

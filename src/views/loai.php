@@ -19,7 +19,7 @@ $ds_loai = mysqli_fetch_all($ds_loai);
         <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
                 <!-- <th>Mã số</th> -->
-                <th onclick="sortTable(0)">Mã loại<i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
+                <th >Mã loại</th>
                 <th onclick="sortTable(1)">Tên<i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
                 <?php
                 if (isset($_SESSION['admin_id']))

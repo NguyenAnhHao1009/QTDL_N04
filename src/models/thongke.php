@@ -1,117 +1,44 @@
 <?php
 
-use Psr\Log\NullLogger;
+require __DIR__ . '/../../config.php';
 
 try {
     if (isset($_POST['start_date']) && isset($_POST['end_date'])) {
         $start_date = $_POST['start_date']; // Lấy ngày bắt đầu từ form
-        $end_date = $_POST['end_date']; // Lấy ngày kết thúc từ form
-        if (($start_date > $end_date) && !empty($_POST['start_date']) && !empty($_POST['end_date'])) {
-            $start_date='';
-            $end_date='';
-            echo "<script>alert('Vui lòng nhập ngày bắt đầu nhỏ hơn ngày kết thúc!');</script>";
+        $end_date_string = $_POST['end_date'];
+        $end_date = new DateTime($end_date_string); // Chuyển đổi chuỗi ngày thành đối tượng DateTime
+        $end_date->modify('+1 day');
+        $end_date = $end_date->format('Y-m-d');
+        // Lấy ngày kết thúc từ form
+        if (empty($start_date) || empty($end_date)) {
+            echo "<script>alert('Vui lòng nhập ngày bắt đầu và ngày kết thúc!');</script>";
+        } elseif ($start_date > $end_date) {
+            echo "<script>alert('Ngày bắt đầu phải nhỏ hơn ngày kết thúc!');</script>";
         } else {
-            // Thực hiện câu truy vấn để lấy thông tin hóa đơn trong khoảng thời gian
-            $invoices_query = "SELECT inv.invoice_id, inv.creation_time, cus.customer_name, acc.full_name, inv.total 
-                        FROM invoices inv
-                        JOIN customers cus ON inv.customer_id = cus.customer_id
-                        JOIN accounts acc ON inv.account_id = acc.account_id
-                        WHERE inv.creation_time BETWEEN '$start_date' AND '$end_date'";
-            $ds_hoadon = mysqli_query($conn, $invoices_query);
+            // Thực hiện kết nối CSDL
 
-            // Hiển thị kết quả
-            $ds_hoadon = mysqli_fetch_all($ds_hoadon);
-            // print_r($ds_hoadon);
-            // Tổng doanh thu:
-            $total_amout = "SELECT SUM(total) AS total_revenue FROM invoices WHERE creation_time BETWEEN '$start_date' AND '$end_date'";
-            $tong_doanhthu_query = mysqli_query($conn, $total_amout);
-            $tong_doanhthu_row = mysqli_fetch_array($tong_doanhthu_query);
-            $tong_doanhthu = $tong_doanhthu_row[0];
-            // print_r($tong_doanhthu);
-
-            // Khách mua nhiều nhất 
-            $customer_sales = "SELECT customer_name
-            FROM customers
-            WHERE customer_id IN (
-                SELECT customer_id
-                FROM (
-                    SELECT customer_id, COUNT(*) AS times
-                    FROM invoices
-                    WHERE creation_time BETWEEN '$start_date' AND '$end_date'
-                    GROUP BY customer_id
-                ) AS counts
-                WHERE times = (
-                    SELECT MAX(times)
-                    FROM (
-                        SELECT COUNT(*) AS times
-                        FROM invoices
-                        WHERE creation_time BETWEEN '$start_date' AND '$end_date'
-                        GROUP BY customer_id
-                    ) AS inner_counts
-                )
-            );";
-
-
-            $customer_sales_query = mysqli_query($conn, $customer_sales);
-            $customer_sales_rows = mysqli_fetch_all($customer_sales_query);
-
-
-
-
-            // Món bán chạy nhất 
-            $mon_ban_chay_sql = "SELECT item_name
-            FROM items
-            WHERE item_id IN (
-                SELECT id.item_id
-                FROM invoices i, invoice_details id 
-                WHERE i.invoice_id = id.invoice_id
-                AND i.creation_time BETWEEN '$start_date' AND '$end_date'
-                GROUP BY id.item_id
-                HAVING COUNT(*) IN (
-                    SELECT MAX(time)
-                    FROM (
-                        SELECT COUNT(*) AS time
-                        FROM invoices i, invoice_details id 
-                        WHERE i.invoice_id = id.invoice_id 
-                        AND i.creation_time BETWEEN '$start_date' AND '$end_date'
-                        GROUP BY id.item_id
-                    ) AS tb
-                )
-            );
-        ";
-            $mon_chay = mysqli_query($conn, $mon_ban_chay_sql);
-            $mon_chay_rows = mysqli_fetch_all($mon_chay);
-
-
-            //Nhân viên tốt nhất
-            $name_best_staff = "SELECT full_name 
-            FROM accounts
-            WHERE account_id IN (
-                SELECT account_id
-                FROM invoices
-                WHERE creation_time BETWEEN '$start_date' AND '$end_date'
-                GROUP BY account_id
-                HAVING COUNT(*) = (
-                    SELECT MAX(times)
-                    FROM (
-                        SELECT COUNT(*) AS times
-                        FROM invoices
-                        WHERE creation_time BETWEEN '$start_date' AND '$end_date'
-                        GROUP BY account_id
-                    ) AS counts
-                )
-            );";
-
-            $name_best_staff = mysqli_query($conn, $name_best_staff);
-            $name_best_staff_rows = mysqli_fetch_all($name_best_staff);
+            // Kiểm tra kết nối
+            if ($conn->connect_error) {
+                die("Kết nối thất bại: " . $conn->connect_error);
+            }
+            // Thực hiện câu truy vấn sử dụng prepared statements
+            $procedure_call = "CALL GetInvoicesByDateRange(?, ?)";
+            $stmt = $conn->prepare($procedure_call);
+            $stmt->bind_param("ss", $start_date, $end_date);
+            $stmt->execute();
+            // Lấy kết quả
+            $ds_hoadon = $stmt->get_result();
+            // Xử lý kết quả
+            if ($ds_hoadon->num_rows > 0) {
+            } else {
+                echo "<script>alert('Không có hóa đơn trong khoảng thời gian này.');</script>";
+            }
+            // Đóng kết nối
+            $stmt->close();
+            $conn->close();
         }
-    } else {
-        $ds_hoadon = [];
-        $tong_doanhthu = [];
-        $khach_max = [];
-        $mon_chay = [];
-        $nhan_vien_tot_nhat = [];
     }
 } catch (Exception $e) {
-    header('location: /user_page.php?thongke1');
+    // Xử lý ngoại lệ
+    echo "<script>alert('Đã xảy ra lỗi: " . $e->getMessage() . "');</script>";
 }

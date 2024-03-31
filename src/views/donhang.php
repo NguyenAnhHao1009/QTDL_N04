@@ -39,7 +39,7 @@ if (!isset($ds_donhang_timkiem)) {
         <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
                 <!-- <th>Mã số</th> -->
-                <th onclick="sortTable(0)">ID Hóa đơn <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></i></th>
+                <th >ID Hóa đơn </th>
                 <th onclick="sortTable(1)">Ngày tạo <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(2)">Người lập <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(3)">Tên khách <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></th>
@@ -52,7 +52,7 @@ if (!isset($ds_donhang_timkiem)) {
                     <td><?= $hd[1] ?></td>
                     <td><?= $hd[2] ?></td>
                     <td><?= $hd[3] ?></td>
-                    <td><?= intval($hd[4]) ?>Đánh dấu</td>
+                    <td><?= intval($hd[4]) ?></td>
                     <td>
                         <a href="/user_page.php?donhang=xoa&id=<?= $hd[0] ?>"><i class="btn btn-outline-danger fa-solid fa-trash"></i></a>
                         <a href="/user_page.php?donhang=in&id=<?= $hd[0] ?>"><i class="btn btn-outline-primary fa-solid fa-print"></i></i></a>
