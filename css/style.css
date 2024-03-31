@@ -86,7 +86,8 @@ a {
     font-weight: bolder;
 }
 
-.table {
+
+/* .table {
     border-collapse: collapse;
 }
 
@@ -98,6 +99,39 @@ a {
 
 .table th {
     background-color: #f2f2f2;
+} */
+
+
+/* Style cho bảng */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+/* Style cho hàng */
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+/* Style cho tiêu đề hàng */
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+/* Style cho ô */
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
 }
 
 
@@ -114,6 +148,7 @@ a {
     text-decoration: none;
 }
 
+
 /* .container {
     min-height: 100vh;
     display: flex;
@@ -122,6 +157,8 @@ a {
     padding: 20px;
     padding-bottom: 60px;
 } */
+
+
 /* 
 .container .content {
     text-align: center;

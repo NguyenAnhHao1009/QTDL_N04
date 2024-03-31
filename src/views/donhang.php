@@ -52,7 +52,7 @@ if (!isset($ds_donhang_timkiem)) {
                     <td><?= $hd[1] ?></td>
                     <td><?= $hd[2] ?></td>
                     <td><?= $hd[3] ?></td>
-                    <td><?= $hd[4] ?>.000 VNĐ</td>
+                    <td><?= intval($hd[4]) ?>.000 VNĐ</td>
                     <td>
                         <a href="/user_page.php?donhang=xoa&id=<?= $hd[0] ?>"><i class="btn btn-outline-danger fa-solid fa-trash"></i></a>
                         <a href="/user_page.php?donhang=in&id=<?= $hd[0] ?>"><i class="btn btn-outline-primary fa-solid fa-print"></i></i></a>
