@@ -89,31 +89,31 @@ require('./src/models/thongke.php');
                     <th scope="col">Số liệu</th>
                 </tr>
                 <?php
-                if (!empty($tong_doanhthu)) {
+                if (!empty($tong_doanhthu)) {                
                     echo "<tr>
                     <td class='fw-bolder'>Tổng doanh thu</td>
-                    <td>$tong_doanhthu VNĐ</td>
+                    <td>$total_revenue VNĐ</td>
                     </tr>                                      
                     ";
                     if (!empty($customer_sales_rows)) {
                     }
 
                     if (!empty($customer_sales_rows)) {
-                        $number = count($customer_sales_rows);
+                        $number = $customer_sales_rows->num_rows;
                         echo " <tr>
                             <td class='fw-bolder'>Khách mua nhiều nhất</td><td>";
                         foreach ($customer_sales_rows as $name) {
-                            echo "[$name[0]] ";
+                            echo "[" . $name['customer_name'] . " ]";
                         }
                         echo "</td> </tr>";
-                    }
+                    } 
 
                     if (!empty($mon_chay_rows)) {
-                        $number = count($mon_chay_rows);
+                        $number = $mon_chay_rows->num_rows;
                         echo " <tr>
                             <td class='fw-bolder'>Món bán chạy</td><td>";
                         foreach ($mon_chay_rows as $name) {
-                            echo "[$name[0]] ";
+                            echo "[" . $name['best_selling_item']. " ]";
                         }
                         echo "</td> </tr>";
                     }
@@ -121,11 +121,11 @@ require('./src/models/thongke.php');
 
 
                     if (!empty($name_best_staff_rows)) {
-                        $number = count($name_best_staff_rows);
+                        $number = $name_best_staff_rows->num_rows;
                         echo " <tr >
                             <td class='fw-bolder'>Nhân viên tích cực nhất</td><td>";
                         foreach ($name_best_staff_rows as $name) {
-                            echo "[$name[0]] ";
+                            echo "[" . $name['full_name']." ]";
                         }
                         echo "</td> </tr>";
                     }
