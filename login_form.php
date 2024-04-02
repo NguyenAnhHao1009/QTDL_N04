@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
                };
             };
 
-            if(isset($_SESSION['dang-ky-thanh-cong'])){
+            if (isset($_SESSION['dang-ky-thanh-cong'])) {
                echo $_SESSION['dang-ky-thanh-cong'];
                unset($_SESSION['dang-ky-thanh-cong']);
             }

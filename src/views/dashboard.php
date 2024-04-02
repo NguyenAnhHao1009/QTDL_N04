@@ -141,7 +141,7 @@ $so_tien = $row['so_tien'];
                 <div class="px-3">
                     <div style="background-color: #e83260;" class="box row justify-content-between">
                         <div class="col-7">
-                            <h1 class="fw-bolder"><?= intval($so_tien) ?></h1>
+                            <h1 class="fw-bolder"><?= intval($so_tien) . ' VNĐ' ?></h1>
                             <p class="fw-bolder text-start">Tổng doanh thu</p>
                         </div>
                         <div class="col-5 text-center">

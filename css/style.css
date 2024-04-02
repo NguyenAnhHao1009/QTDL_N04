@@ -14,7 +14,7 @@ a {
   color: aliceblue;
   background-color: #0a1e1f;
   box-shadow: 10px 0px 10px 0px rgba(45, 33, 33, 0.2);
-  height: 100%;
+  min-height: 100%;
 }
 
 .logo {

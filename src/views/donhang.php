@@ -1,8 +1,7 @@
 <?php
 if (!isset($ds_donhang_timkiem)) {
-    $sql = "select inv.invoice_id, inv.creation_time , accounts.full_name , customers.customer_name, inv.total from 
-    invoices inv inner join customers on inv.customer_id = customers.customer_id INNER JOIN accounts ON inv.account_id = accounts.account_id order by inv.creation_time desc;";
-    $ds_hoadon =  mysqli_query($conn, $sql);
+    $sql = "CALL GetInvoiceDetails();";
+    $ds_hoadon = mysqli_query($conn, $sql);
     $ds_hoadon = mysqli_fetch_all($ds_hoadon);
 } else {
     $ds_hoadon = $ds_donhang_timkiem;
@@ -29,7 +28,7 @@ if (!isset($ds_donhang_timkiem)) {
     <div class="head-line"></div>
     <div class="container-fluid row justify-content-between">
         <form action="user_page.php?" method="GET" class="d-flex col-8 my-2" role="search">
-            <input class="form-control me-2" type="text" placeholder="Nhập số điện thoại khách" name='timkiem-donhang' aria-label="Search" required>
+            <input class="form-control me-2" type="text" placeholder="Nhập mã đơn hàng" name='timkiem-donhang' aria-label="Search" required>
             <button class="btn btn-outline-success" type="submit">Tìm</button>
         </form>
         <div class="text-end col-4">
@@ -39,11 +38,11 @@ if (!isset($ds_donhang_timkiem)) {
         <table id="myTable" class="table container-fluid text-center table-hover table-striped table-bordered">
             <tr>
                 <!-- <th>Mã số</th> -->
-                <th >ID Hóa đơn </th>
+                <th>ID Hóa đơn </th>
                 <th onclick="sortTable(1)">Ngày tạo <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(2)">Người lập <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></i></th>
                 <th onclick="sortTable(3)">Tên khách <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></th>
-                <th onclick="sortTable(4)">Số tiền <i href="" class=" fw-bolder"><i class="p-0 btn fa-solid fa-sort"></th>
+                <th>Số tiền <i href="" class=" fw-bolder"></th>
                 <th>Thao tác</th>
             </tr>
             <?php foreach ($ds_hoadon as $hd) : ?>

@@ -65,7 +65,7 @@ require('./src/models/thongke.php');
                                             <td><?= $hd['creation_time'] ?? 0 ?></td>
                                             <td><?= $hd['customer_name'] ?? 0 ?></td>
                                             <td><?= $hd['full_name'] ?? 0 ?></td>
-                                            <td><?= intval($hd['total']) ?> VNĐ</td>
+                                            <td><?= intval($hd['total']) ?? 0 ?> VNĐ</td>
                                         </tr>
                                 <?php endforeach;
                                 } else {
@@ -89,7 +89,7 @@ require('./src/models/thongke.php');
                     <th scope="col">Số liệu</th>
                 </tr>
                 <?php
-                if (!empty($tong_doanhthu)) {                
+                if (!empty($tong_doanhthu)) {
                     echo "<tr>
                     <td class='fw-bolder'>Tổng doanh thu</td>
                     <td>$total_revenue VNĐ</td>
@@ -101,19 +101,19 @@ require('./src/models/thongke.php');
                     if (!empty($customer_sales_rows)) {
                         $number = $customer_sales_rows->num_rows;
                         echo " <tr>
-                            <td class='fw-bolder'>Khách mua nhiều nhất</td><td>";
+                            <td class='fw-bolder'>Khách hàng có nhiều hóa đơn nhất</td><td>";
                         foreach ($customer_sales_rows as $name) {
-                            echo "[" . $name['customer_name'] . " ]";
+                            echo "[" . $name['customer_name'] . "] ";
                         }
                         echo "</td> </tr>";
-                    } 
+                    }
 
                     if (!empty($mon_chay_rows)) {
                         $number = $mon_chay_rows->num_rows;
                         echo " <tr>
                             <td class='fw-bolder'>Món bán chạy</td><td>";
                         foreach ($mon_chay_rows as $name) {
-                            echo "[" . $name['best_selling_item']. " ]";
+                            echo "[" . $name['best_selling_item'] . "] ";
                         }
                         echo "</td> </tr>";
                     }
@@ -121,11 +121,11 @@ require('./src/models/thongke.php');
 
 
                     if (!empty($name_best_staff_rows)) {
-                        $number = $name_best_staff_rows->num_rows;
+                        $number = $name_best_staff_rows->num_rows;  
                         echo " <tr >
                             <td class='fw-bolder'>Nhân viên tích cực nhất</td><td>";
                         foreach ($name_best_staff_rows as $name) {
-                            echo "[" . $name['full_name']." ]";
+                            echo "[" . $name['full_name'] . "] ";
                         }
                         echo "</td> </tr>";
                     }
