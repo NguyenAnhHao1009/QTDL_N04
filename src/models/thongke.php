@@ -33,9 +33,70 @@ try {
             } else {
                 echo "<script>alert('Không có hóa đơn trong khoảng thời gian này.');</script>";
             }
-            // Đóng kết nối
             $stmt->close();
+            // Thủ tục 2: 
+            $procedure_call_total = "CALL GetTotalRevenue(?, ?)";
+            $stmt2 = $conn->prepare($procedure_call_total);
+            $stmt2->bind_param("ss", $start_date, $end_date);
+            $stmt2->execute();
+            $tong_doanhthu = $stmt2->get_result();
+            $total_revenue=0;
+            if ($tong_doanhthu->num_rows > 0) {
+                $row = $tong_doanhthu->fetch_assoc();
+                $total_revenue = $row['total_revenue'];
+            } else {
+                echo "<script>alert('Doanh thu trống trong khoảng thời gian này.');</script>";
+            }
+            // Đóng kết nối
+
+            $stmt2->close();
+
+            // Thủ tục 3:
+            $procedure_call_customer = "CALL GetTopCustomerByDateRange(?, ?)";
+            $stmt3 = $conn->prepare($procedure_call_customer);
+            $stmt3->bind_param("ss", $start_date, $end_date);
+            $stmt3->execute();
+            $customer_sales_rows = $stmt3->get_result();
+            // print_r($customer_sales_rows);
+            if ($customer_sales_rows->num_rows > 0) {                
+            } else {
+                $customer_sales_rows = [];
+            }           
+            $stmt3->close();
+             // Hàm tìm món bán chạy nhất
+            $function_call_bestselling = "CALL GetBestSellingItemProcedure(?, ?)";
+            $stmt4 = $conn->prepare($function_call_bestselling);
+            $stmt4->bind_param("ss", $start_date, $end_date);
+            $stmt4->execute();
+            $mon_chay_rows = $stmt4->get_result();
+    
+            // Xử lý kết quả
+            if ($mon_chay_rows->num_rows > 0) {                          
+                
+            } else {
+                $mon_chay_rows = [];
+            }
+            $stmt4->close();
+            // Thủ tục tìm nhân viên
+            $function_call_account = "CALL GetTopAccountByDateRange(?, ?)";
+            $stmt5 = $conn->prepare($function_call_account);
+            $stmt5->bind_param("ss", $start_date, $end_date);
+            $stmt5->execute();
+            $name_best_staff_rows = $stmt5->get_result();
+    
+            // Xử lý kết quả
+            if ($name_best_staff_rows->num_rows > 0) {                          
+                
+            } else {
+                $name_best_staff_rows = [];
+            }
+            $stmt5->close();
+
+
             $conn->close();
+
+
+
         }
     }
 } catch (Exception $e) {
