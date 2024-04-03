@@ -1,4 +1,8 @@
 <?php
+
+if (isset($ds_kh_sapxep)) {
+    $ds_khachhang = array_values($ds_kh_sapxep);
+} else
 if (!isset($ds_kh_timkiem)) {
     $sql = "select * from customers; ";
     $ds_khachhang =  mysqli_query($conn, $sql);
@@ -6,7 +10,6 @@ if (!isset($ds_kh_timkiem)) {
 } else {
     $ds_khachhang = $ds_kh_timkiem;
 }
-
 ?>
 
 
@@ -32,6 +35,8 @@ if (!isset($ds_kh_timkiem)) {
 
 
         <div class="text-end col-4">
+            <a href="user_page.php?khachhang=tang_dan" class="my-2 btn btn-success fw-bolder"><i class="fa-solid fa-arrow-down-a-z"></i></a>
+            <a href="user_page.php?khachhang=giam_dan" class="my-2 btn btn-success fw-bolder"><i class="fa-solid fa-arrow-down-z-a"></i></a>
             <a href="user_page.php?khachhang=them" class="my-2 btn btn-success fw-bolder"><i class="fa-solid fa-file-circle-plus"></i> Thêm</a>
         </div>
 
@@ -46,7 +51,9 @@ if (!isset($ds_kh_timkiem)) {
 
 
             </tr>
-            <?php foreach ($ds_khachhang as $kh) : ?>
+            <?php foreach ($ds_khachhang as $kh) :
+                $kh = array_values($kh);
+            ?>
                 <tr>
                     <td><?= $kh[0] ?></td>
                     <td><?= $kh[1] ?></td>

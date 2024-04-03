@@ -153,6 +153,12 @@ if (isset($_GET['donhang'])) {
 }
 if (isset($_GET['khachhang'])) {
    switch ($_GET['khachhang']) {
+      case 'tang_dan':
+         require_once __DIR__ . '/src/models/tang_dan_khachhang.php';
+         break;
+      case 'giam_dan':
+         require_once __DIR__ . '/src/models/giam_dan_khachhang.php';
+         break;
       case 'them':
          require_once __DIR__ . '/src/models/them_khachhang.php';
          break;
